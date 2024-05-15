@@ -7,6 +7,7 @@ use App\Livewire\Company\Show as Company;
 use App\Livewire\ControlPanel;
 use App\Livewire\Home;
 use App\Livewire\Solutions;
+use App\Livewire\Transactions\Show as Transactions;
 use App\Livewire\Wallet\Show as Wallet;
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +33,5 @@ Route::middleware([
 	WalletAccess::class
 ])->group(function () {
 	Route::get('/control/wallet', Wallet::class)->name('wallet');
+	Route::get('/control/transactions', Transactions::class)->name('transactions');
 });
