@@ -11,13 +11,18 @@
                 {{ __('Home') }}
             </x-nav-link>
         </li>
-				@if (Auth::user()->role->privileges->wallet_access)
-        <li class="">
-            <x-nav-link href="{{ route('wallet') }}" :active="request()->routeIs('wallet')">
-                {{ __('Wallet') }}
-            </x-nav-link>
-        </li>
-				@endif
+        @if (Auth::user()->role->privileges->wallet_access)
+            <li class="">
+                <x-nav-link href="{{ route('wallet') }}" :active="request()->routeIs('wallet')">
+                    {{ __('Wallet') }}
+                </x-nav-link>
+            </li>
+            <li class="">
+                <x-nav-link href="{{ route('transactions') }}" :active="request()->routeIs('transactions')">
+                    {{ __('Payments') }}
+                </x-nav-link>
+            </li>
+        @endif
         @if (Auth::user()->role->privileges->can_order_service)
             <li class="">
                 <x-nav-link href="{{ route('solutions') }}" :active="request()->routeIs('solutions')">
@@ -57,13 +62,6 @@
             <li class="">
                 <x-nav-link href="{{ route('solutions') }}" :active="request()->routeIs('solutions')">
                     {{ __('Find a problem?') }}
-                </x-nav-link>
-            </li>
-        @endif
-        @if (Auth::user()->role->privileges->wallet_access)
-            <li class="">
-                <x-nav-link href="{{ route('solutions') }}" :active="request()->routeIs('solutions')">
-                    {{ __('Payments') }}
                 </x-nav-link>
             </li>
         @endif

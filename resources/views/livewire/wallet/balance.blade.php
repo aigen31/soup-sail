@@ -1,6 +1,4 @@
 <div>
-
-
     <x-form-section submit="deposit">
         <x-slot name="title">Fill deposit</x-slot>
         <x-slot name="description">Fill your wallet</x-slot>
