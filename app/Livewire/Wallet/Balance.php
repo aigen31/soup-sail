@@ -13,7 +13,7 @@ class Balance extends Component
 
 	public function deposit()
 	{
-		$this->user->deposit(500);
+		$this->user->deposit(1500);
 		$this->dispatch('fill-deposit');
 	}
 

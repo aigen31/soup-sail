@@ -38,7 +38,7 @@ class UpdateCompanyInformationForm extends Component
 
 	public function getCompanyProperty()
 	{
-		return User::findOrFail(Auth::id())->company;
+		return Auth::user()->company;
 	}
 
 	public function updateCompanyInformation()

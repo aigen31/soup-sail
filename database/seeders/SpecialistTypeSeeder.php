@@ -1,0 +1,24 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\SpecialistType;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class SpecialistTypeSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        SpecialistType::create([
+          'name' => 'Full-time'
+        ]);
+        
+        SpecialistType::create([
+          'name' => 'Freelance'
+        ]);
+    }
+}

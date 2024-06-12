@@ -11,7 +11,16 @@
                 {{ __('Home') }}
             </x-nav-link>
         </li>
-        @if (Auth::user()->role->privileges->wallet_access)
+        @if (Auth::user()->role->privileges->can_all)
+            <li class="">
+                <x-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
+                    {{ __('Admin') }}
+                </x-nav-link>
+            </li>
+        @endif
+        @if (Auth::user()->role->privileges->wallet_access &&
+                Auth::user()->role->privileges->can_order_service &&
+                Auth::user()->role->privileges->can_create_tasks)
             <li class="">
                 <x-nav-link href="{{ route('wallet') }}" :active="request()->routeIs('wallet')">
                     {{ __('Wallet') }}
@@ -22,31 +31,9 @@
                     {{ __('Payments') }}
                 </x-nav-link>
             </li>
-        @endif
-        @if (Auth::user()->role->privileges->can_order_service)
             <li class="">
-                <x-nav-link href="{{ route('solutions') }}" :active="request()->routeIs('solutions')">
+                <x-nav-link href="{{ route('services') }}" :active="request()->routeIs('services')">
                     {{ __('Solutions for Bussines') }}
-                </x-nav-link>
-            </li>
-            <li class="">
-                <x-nav-link href="{{ route('solutions') }}" :active="request()->routeIs('solutions')">
-                    {{ __('Service audit for Sellers') }}
-                </x-nav-link>
-            </li>
-            <li class="">
-                <x-nav-link href="{{ route('solutions') }}" :active="request()->routeIs('solutions')">
-                    {{ __('Site') }}
-                </x-nav-link>
-            </li>
-            <li class="">
-                <x-nav-link href="{{ route('solutions') }}" :active="request()->routeIs('solutions')">
-                    {{ __('Partner Program') }}
-                </x-nav-link>
-            </li>
-            <li class="">
-                <x-nav-link href="{{ route('solutions') }}" :active="request()->routeIs('solutions')">
-                    {{ __('Yandex.Metriks') }}
                 </x-nav-link>
             </li>
             <li class="">
@@ -55,21 +42,11 @@
                 </x-nav-link>
             </li>
             <li class="">
-                <x-nav-link href="{{ route('solutions') }}" :active="request()->routeIs('solutions')">
-                    {{ __('Chat with Us') }}
-                </x-nav-link>
-            </li>
-            <li class="">
-                <x-nav-link href="{{ route('solutions') }}" :active="request()->routeIs('solutions')">
-                    {{ __('Find a problem?') }}
+                <x-nav-link href="{{ route('projects') }}" :active="request()->routeIs('projects')">
+                    {{ __('Projects') }}
                 </x-nav-link>
             </li>
         @endif
-        <li class="">
-            <x-nav-link href="{{ route('solutions') }}" :active="request()->routeIs('solutions')">
-                {{ __('Campaigns') }}
-            </x-nav-link>
-        </li>
     </ul>
 
     @auth

@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CompanyCategory>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ProjectTaskStatus>
  */
-class CompanyCategoryFactory extends Factory
+class ProjectTaskStatusFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class CompanyCategoryFactory extends Factory
     public function definition(): array
     {
         return [
-					'name' => $this->faker->unique()->randomElement(['Shop', 'IT', 'Advestering', 'Building', 'Factory'])
+            //
         ];
     }
 }

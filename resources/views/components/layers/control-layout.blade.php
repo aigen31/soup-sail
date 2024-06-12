@@ -31,9 +31,12 @@
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
                     {{ $header }}
 
-                    @if (Auth::user()->role->privileges->wallet_access)
-                        @livewire('wallet.header-balance')
-                    @endif
+                    <div class="ml-auto flex items-center space-x-3">
+                        @if (Auth::user()->role->privileges->wallet_access)
+                            @livewire('wallet.header-balance')
+                            @livewire('cart.header-cart')
+                        @endif
+                    </div>
                 </div>
             </header>
         @endif
