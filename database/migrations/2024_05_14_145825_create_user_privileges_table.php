@@ -15,6 +15,7 @@ return new class extends Migration
 			$table->id();
 			$table->unsignedInteger('user_role_id');
 			$table->boolean('can_all');
+			$table->boolean('can_create_company');
 			$table->boolean('can_create_tasks');
 			$table->boolean('can_look_all_tasks');
 			$table->boolean('can_look_delegate_tasks');

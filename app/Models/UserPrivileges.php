@@ -11,6 +11,7 @@ class UserPrivileges extends Model
 
 	protected $attributes = [
 		'can_all' => false,
+    'can_create_company' => false,
 		'can_create_tasks' => false,
 		'can_look_all_tasks' => false,
 		'can_look_delegate_tasks' => false,
