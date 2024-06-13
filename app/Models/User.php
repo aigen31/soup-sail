@@ -79,10 +79,15 @@ class User extends Authenticatable implements Wallet
   //   'user_role_id' => 3
   // ];
 
-  public function company(): HasOne
+  public function company(): BelongsTo
   {
-    return $this->hasOne(Company::class);
+    return $this->belongsTo(Company::class);
   }
+
+  // public function company(): HasOne
+  // {
+  //   return $this->hasOne(Company::class);
+  // }
 
   public function role(): BelongsTo
   {

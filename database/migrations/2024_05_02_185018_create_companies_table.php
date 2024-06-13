@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id');
+            // $table->unsignedInteger('user_id');
             $table->string('category')->nullable();
             $table->string('body')->nullable();
             $table->string('inn')->nullable();
