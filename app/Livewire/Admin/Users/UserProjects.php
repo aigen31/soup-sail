@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\Users;
 
 use App\Models\User;
 use App\View\Components\Layers\ControlLayout;
@@ -8,7 +8,7 @@ use App\View\Support\SortTable;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class UserTransactions extends Component
+class UserProjects extends Component
 {
   use WithPagination;
   use SortTable;
@@ -21,18 +21,21 @@ class UserTransactions extends Component
         return 'created_at';
         break;
       case '1':
-        return 'amount';
+        return 'updated_at';
+        break;
+      case '2':
+        return 'name';
         break;
     }
   }
 
-  public function getTransactionsProperty()
+  public function getProjectsProperty()
   {
-    return User::find($this->userId)->transactions()->orderBy($this->sortBy(), $this->sortType)->paginate(10);
+    return User::find($this->userId)->projects()->orderBy($this->sortBy(), $this->sortType)->paginate(10);
   }
 
   public function render()
   {
-    return view('livewire.admin.user-transactions')->layout(ControlLayout::class);
+    return view('livewire.admin.users.user-projects')->layout(ControlLayout::class);
   }
 }

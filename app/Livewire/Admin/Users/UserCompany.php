@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\Users;
 
 use App\Models\User;
 use App\View\Components\Layers\ControlLayout;
@@ -17,6 +17,6 @@ class UserCompany extends Component
 
   public function render()
   {
-    return view('livewire.admin.user-company')->layout(ControlLayout::class);
+    return view('livewire.admin.users.user-company')->layout(ControlLayout::class);
   }
 }

@@ -5,13 +5,13 @@ use App\Http\Middleware\Privileges\CanOrderServiceAccess;
 use App\Http\Middleware\UserAuthentification;
 use App\Http\Middleware\UserRoleControlRedirect;
 use App\Http\Middleware\Privileges\WalletAccess;
-use App\Livewire\Admin\Show as Users;
-use App\Livewire\Admin\UserCompany;
-use App\Livewire\Admin\UserProject;
-use App\Livewire\Admin\UserProjects;
-use App\Livewire\Admin\UserTransactions;
-use App\Livewire\Admin\UserUpdateProject;
-use App\Livewire\Admin\UserUpdateTask;
+use App\Livewire\Admin\Users\Show as Users;
+use App\Livewire\Admin\Users\UserCompany;
+use App\Livewire\Admin\Users\UserProject;
+use App\Livewire\Admin\Users\UserProjects;
+use App\Livewire\Admin\Users\UserTransactions;
+use App\Livewire\Admin\Users\UserUpdateProject;
+use App\Livewire\Admin\Users\UserUpdateTask;
 use App\Livewire\Cart;
 use App\Livewire\Company\Show as Company;
 use App\Livewire\ControlPanel;
@@ -53,9 +53,9 @@ Route::middleware([
   Route::get('/control/users/{userId}/transactions', UserTransactions::class)->name('user-transactions');
   Route::get('/control/users/{userId}/company', UserCompany::class)->name('user-company');
   Route::get('/control/users/{userId}/projects', UserProjects::class)->name('user-projects');
-  Route::get('/control/users/{userId}/project/{projectId}', UserProject::class)->name('user-project');
-  Route::get('/control/users/{userId}/project/{projectId}/update', UserUpdateProject::class)->name('user-update-project');
-  Route::get('/control/users/{userId}/project/{projectId}/task/{taskId}/update', UserTransactions::class)->name('user-update-task');
+  Route::get('/control/users/project/{projectId}', UserProject::class)->name('user-project');
+  Route::get('/control/users/project/{projectId}/update', UserUpdateProject::class)->name('user-update-project');
+  Route::get('/control/users/task/{taskId}/update', UserUpdateTask::class)->name('user-update-task');
 });
 
 Route::middleware([

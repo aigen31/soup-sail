@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\Users;
 
 use App\Models\User;
 use App\View\Support\SortTable;
@@ -31,8 +31,9 @@ class UserList extends Component
   {
     return User::orderBy($this->sortBy(), $this->sortType)->paginate(10);
   }
+
   public function render()
   {
-    return view('livewire.admin.user-list');
+    return view('livewire.admin.users.user-list');
   }
 }
