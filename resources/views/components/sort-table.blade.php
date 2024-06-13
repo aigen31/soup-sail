@@ -32,16 +32,30 @@
         <table class="w-full">
             <thead>
                 <tr>
-                    @foreach (explode(', ', $headers) as $item)
-                      <th class="px-5 py-3 text-left">
-                        {{ $item }}
-                      </th>
+                    @foreach (explode(', ', $headers) as $key => $item)
+                        {{-- @if ($key != count(explode(', ', $headers)) - 1)
+                            <th class="px-5 py-3 text-left">
+                                {{ $item }}
+                            </th>
+                        @elseif (empty($item))
+                            <th class="px-5 py-3">
+                                {{ $item }}
+                            </th>
+                        @else
+                            <th class="px-5 py-3 text-right">
+                                {{ $item }}
+                            </th>
+                        @endif --}}
+
+                        <th class="px-5 py-3 text-left">
+                            {{ $item }}
+                        </th>
                     @endforeach
                 </tr>
             </thead>
 
             <tbody>
-              {{ $slot }}
+                {{ $slot }}
             </tbody>
         </table>
     </div>
