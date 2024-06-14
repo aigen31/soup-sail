@@ -2,8 +2,13 @@
 
 use App\Http\Middleware\Privileges\CanAllAccess;
 use App\Http\Middleware\Privileges\CanCreateTasksAccess;
+use App\Http\Middleware\Privileges\CanDelegatePerformer;
+use App\Http\Middleware\Privileges\CanDelegatePerformerAccess;
+use App\Http\Middleware\Privileges\CanLookAllTasksAccess;
 use App\Http\Middleware\Privileges\CanOrderServiceAccess;
+use App\Http\Middleware\Privileges\HasPrivilegyMiddleware;
 use App\Http\Middleware\Privileges\WalletAccess;
+use App\Http\Middleware\Roles\HasRoleMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -16,13 +21,9 @@ return Application::configure(basePath: dirname(__DIR__))
     health: '/up',
   )
   ->withMiddleware(function (Middleware $middleware) {
-    $middleware->appendToGroup('business-owner', [
-      WalletAccess::class,
-      CanOrderServiceAccess::class,
-      CanCreateTasksAccess::class,
-    ]);
-    $middleware->appendToGroup('admin', [
-      CanAllAccess::class,
+    $middleware->alias([
+      'role' => HasRoleMiddleware::class,
+      'privilegy' => HasPrivilegyMiddleware::class,
     ]);
   })
   ->withExceptions(function (Exceptions $exceptions) {
