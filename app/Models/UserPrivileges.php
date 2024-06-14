@@ -21,5 +21,6 @@ class UserPrivileges extends Model
 		'can_ask_question' => false,
 		'wallet_access' => false,
 		'allow_delegate_access' => false,
+		'can_delegate_performer' => false,
 	];
 }

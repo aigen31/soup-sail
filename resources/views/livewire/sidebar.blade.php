@@ -11,7 +11,8 @@
                 {{ __('Home') }}
             </x-nav-link>
         </li>
-        @if (Auth::user()->role->privileges->can_all)
+        @if ($this->privileges->can_all)
+        {{-- @if (Auth::user()->role->privileges->can_all) --}}
             <li class="">
                 <x-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
                     {{ __('Admin') }}
