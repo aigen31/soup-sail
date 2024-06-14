@@ -25,6 +25,7 @@ return new class extends Migration
 			$table->boolean('can_ask_question');
 			$table->boolean('wallet_access');
 			$table->boolean('allow_delegate_access');
+			$table->boolean('can_delegate_performer');
 			$table->timestamps();
 		});
 	}

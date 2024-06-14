@@ -1,10 +1,5 @@
 <?php
 
-use App\Http\Middleware\Privileges\CanCreateTasksAccess;
-use App\Http\Middleware\Privileges\CanOrderServiceAccess;
-use App\Http\Middleware\UserAuthentification;
-use App\Http\Middleware\UserRoleControlRedirect;
-use App\Http\Middleware\Privileges\WalletAccess;
 use App\Livewire\Admin\Users\Show as Users;
 use App\Livewire\Admin\Users\UserCompany;
 use App\Livewire\Admin\Users\UserProject;
@@ -32,22 +27,25 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', Home::class)->name('home');
 
 Route::middleware([
-	'auth:sanctum',
-	config('jetstream.auth_session'),
-	'verified',
+  'auth:sanctum',
+  config('jetstream.auth_session'),
+  'verified',
 ])->group(function () {
-	Route::get('/dashboard', function () {
-		return view('dashboard');
-	})->name('dashboard');
-	Route::get('/control', ControlPanel::class)->name('control');
-	Route::get('/control/solutions', Solutions::class)->name('solutions');
+  Route::get('/dashboard', function () {
+    return view('dashboard');
+  })->name('dashboard');
+  Route::get('/control', ControlPanel::class)->name('control');
+  Route::get('/control/solutions', Solutions::class)->name('solutions');
 });
 
 Route::middleware([
   'auth:sanctum',
-	config('jetstream.auth_session'),
-	'verified',
-  'admin',
+  config('jetstream.auth_session'),
+  'verified',
+  'privilegy:can_look_all_tasks',
+  'privilegy:can_make_posts',
+  'privilegy:can_delegate_performer',
+  'privilegy:can_responce_by_support',
 ])->group(function () {
   Route::get('/control/users', Users::class)->name('users');
   Route::get('/control/users/{userId}/transactions', UserTransactions::class)->name('user-transactions');
@@ -59,21 +57,25 @@ Route::middleware([
 });
 
 Route::middleware([
-	'auth:sanctum',
-	config('jetstream.auth_session'),
-	'verified',
-  'business-owner'
+  'auth:sanctum',
+  config('jetstream.auth_session'),
+  'verified',
+  'privilegy:can_create_tasks',
+  'privilegy:can_order_service',
+  'privilegy:can_ask_question',
+  'privilegy:wallet_access',
+  'privilegy:allow_delegate_access',
 ])->group(function () {
-	Route::get('/control/wallet', Wallet::class)->name('wallet');
-	Route::get('/control/services/{parentId?}', Services::class)->name('services');
-	Route::get('/control/services/service/{serviceId}', Service::class)->name('service');
-	Route::get('/control/transactions', Transactions::class)->name('transactions');
-	Route::get('/control/cart', Cart::class)->name('cart');
+  Route::get('/control/wallet', Wallet::class)->name('wallet');
+  Route::get('/control/services/{parentId?}', Services::class)->name('services');
+  Route::get('/control/services/service/{serviceId}', Service::class)->name('service');
+  Route::get('/control/transactions', Transactions::class)->name('transactions');
+  Route::get('/control/cart', Cart::class)->name('cart');
   Route::get('/control/company', Company::class)->name('company');
-	Route::get('/control/project/{projectId}', Project::class)->name('project');
-	Route::get('/control/project/{projectId}/update', UpdateProject::class)->name('update-project');
-	Route::get('/control/projects', ProjectList::class)->name('projects');
-	Route::get('/control/projects/create', CreateProject::class)->name('create-project');
-	Route::get('/control/project/{projectId}/task/{taskId}/update', UpdateTask::class)->name('update-task');
-	Route::get('/control/project/{projectId}/task/create', CreateTask::class)->name('create-task');
+  Route::get('/control/project/{projectId}', Project::class)->name('project');
+  Route::get('/control/project/{projectId}/update', UpdateProject::class)->name('update-project');
+  Route::get('/control/projects', ProjectList::class)->name('projects');
+  Route::get('/control/projects/create', CreateProject::class)->name('create-project');
+  Route::get('/control/project/{projectId}/task/{taskId}/update', UpdateTask::class)->name('update-task');
+  Route::get('/control/project/{projectId}/task/create', CreateTask::class)->name('create-task');
 });

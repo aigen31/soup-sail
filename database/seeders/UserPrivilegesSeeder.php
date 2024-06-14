@@ -23,6 +23,8 @@ class UserPrivilegesSeeder extends Seeder
       'user_role_id' => 2,
       'can_look_all_tasks' => true,
       'can_make_posts' => true,
+      'can_delegate_performer' => true,
+      'can_responce_by_support' => true,
     ]);
 
     UserPrivileges::create([

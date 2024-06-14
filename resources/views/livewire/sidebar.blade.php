@@ -11,17 +11,16 @@
                 {{ __('Home') }}
             </x-nav-link>
         </li>
-        @if ($this->privileges->can_all)
-        {{-- @if (Auth::user()->role->privileges->can_all) --}}
+        @if ($this->privileges->can_all || $this->privileges->can_delegate_performer || $this->privileges->can_look_all_tasks)
             <li class="">
                 <x-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
-                    {{ __('Admin') }}
+                    {{ __('Control') }}
                 </x-nav-link>
             </li>
         @endif
-        @if (Auth::user()->role->privileges->wallet_access &&
-                Auth::user()->role->privileges->can_order_service &&
-                Auth::user()->role->privileges->can_create_tasks)
+        @if ($this->privileges->wallet_access &&
+                $this->privileges->can_order_service &&
+                $this->privileges->can_create_tasks)
             <li class="">
                 <x-nav-link href="{{ route('wallet') }}" :active="request()->routeIs('wallet')">
                     {{ __('Wallet') }}
