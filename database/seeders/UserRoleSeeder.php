@@ -14,19 +14,23 @@ class UserRoleSeeder extends Seeder
   public function run(): void
   {
     UserRole::create([
-      'name' => 'Admin'
+      'name' => 'Admin',
+      'hierarchy' => 0,
     ]);
 
     UserRole::create([
-      'name' => 'Moderator'
+      'name' => 'Moderator',
+      'hierarchy' => 1,
     ]);
 
     UserRole::create([
-      'name' => 'Bussiness Owner'
+      'name' => 'Bussiness Owner',
+      'hierarchy' => 2,
     ]);
 
     UserRole::create([
-      'name' => 'Specialist'
+      'name' => 'Specialist',
+      'hierarchy' => 2,
     ]);
   }
 }
