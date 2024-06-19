@@ -11,6 +11,7 @@ use App\Livewire\Cart;
 use App\Livewire\Company\Show as Company;
 use App\Livewire\ControlPanel;
 use App\Livewire\Home;
+use App\Livewire\Notifications;
 use App\Livewire\Project\CreateProject;
 use App\Livewire\Project\Project;
 use App\Livewire\Project\Show as ProjectList;
@@ -36,6 +37,7 @@ Route::middleware([
   })->name('dashboard');
   Route::get('/control', ControlPanel::class)->name('control');
   Route::get('/control/solutions', Solutions::class)->name('solutions');
+  Route::get('/control/notifications', Notifications::class)->name('notifications');
 });
 
 Route::middleware([

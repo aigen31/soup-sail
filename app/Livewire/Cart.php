@@ -2,12 +2,16 @@
 
 namespace App\Livewire;
 
+use App\Http\Controllers\Moderator\ModeratorController;
 use App\Http\Controllers\ProjectTaskController;
+use App\Models\Project;
+use App\Notifications\NewClientTaskNotification;
 use App\View\Components\Layers\ControlLayout;
 use App\View\Support\Validate\CounterInput;
 use Bavix\Wallet\Exceptions\BalanceIsEmpty;
 use Bavix\Wallet\Exceptions\InsufficientFunds;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Livewire\Component;
 
 class Cart extends Component
@@ -37,6 +41,8 @@ class Cart extends Component
   
   public function addTask()
   {
+    $users = ModeratorController::getModerators();
+
     $this->validate(
       [
         "name" => "required|min:{$this->rules['name']['minlength']}|max:{$this->rules['name']['maxlength']}",
@@ -59,7 +65,14 @@ class Cart extends Component
       'description' => $this->description,
     ];
 
-    ProjectTaskController::create($args, $this->projectId);
+    $taskId = ProjectTaskController::create($args, $this->projectId);
+
+    $invoice = [
+      'taskName' => $this->name,
+      'taskId' => $taskId,
+    ];
+
+    Notification::send($users, new NewClientTaskNotification($invoice));
 
     return redirect()->route('project', $this->projectId);
   }

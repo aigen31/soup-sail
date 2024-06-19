@@ -11,12 +11,14 @@ class NewClientTaskNotification extends Notification
 {
     use Queueable;
 
+    protected $invoice;
+
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct(array $invoice)
     {
-        //
+        $this->invoice = $invoice;
     }
 
     /**
@@ -47,8 +49,10 @@ class NewClientTaskNotification extends Notification
      */
     public function toDatabase(object $notifiable): array
     {
-        // return [
-        //     'title' => 
-        // ];
+        return [
+            'title' => "New task \"{$this->invoice['taskName']}\"",
+            'message' => 'New task was be created',
+            'taskId' => $this->invoice['taskId'],
+        ];
     }
 }
