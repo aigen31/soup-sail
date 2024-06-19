@@ -11,9 +11,9 @@ class ProjectController extends Controller
 {
   public static function create(array $args) : int
   {
-    Auth::user()->project()->create($args);
+    $task = Auth::user()->project()->create($args);
 
-    return Auth::user()->project()->latest()->first()->id;
+    return $task->id;
   }
 
   public static function update(array $args, array $matches)
