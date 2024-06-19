@@ -13,11 +13,26 @@ class SpecialistStatusSeeder extends Seeder
      */
     public function run(): void
     {
-        SpecialistStatus::create([
+        // SpecialistStatus::firstOrCreate([
+        //   'name' => 'Ready for work',
+        //   'user_id' => 4
+        // ]);
+
+        // SpecialistStatus::firstOrCreate([
+        //   'name' => 'Ready for work',
+        //   'user_id' => 5
+        // ]);
+        
+        // SpecialistStatus::firstOrCreate([
+        //   'name' => 'Is busy',
+        //   'user_id' => 6
+        // ]);
+
+        SpecialistStatus::firstOrCreate([
           'name' => 'Ready for work',
         ]);
         
-        SpecialistStatus::create([
+        SpecialistStatus::firstOrCreate([
           'name' => 'Is busy',
         ]);
     }

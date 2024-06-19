@@ -31,6 +31,8 @@ class DatabaseSeeder extends Seeder
       ServicesSeeder::class,
       SpecialistStatusSeeder::class,
       SpecialistTypeSeeder::class,
+      SpecialistStatusUserSeeder::class,
+      SpecialistTypeUserSeeder::class,
     ]);
 	}
 }

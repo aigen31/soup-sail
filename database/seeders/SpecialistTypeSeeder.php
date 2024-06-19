@@ -13,12 +13,27 @@ class SpecialistTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        SpecialistType::create([
-          'name' => 'Full-time'
-        ]);
+        // SpecialistType::create([
+        //   'name' => 'Full-time',
+        //   'user_id' => 5
+        // ]);
         
+        // SpecialistType::create([
+        //   'name' => 'Freelance',
+        //   'user_id' => 4
+        // ]);
+
+        // SpecialistType::create([
+        //   'name' => 'Freelance',
+        //   'user_id' => 6
+        // ]);
+
         SpecialistType::create([
-          'name' => 'Freelance'
+          'name' => 'Full-time',
+        ]);
+
+        SpecialistType::create([
+          'name' => 'Freelance',
         ]);
     }
 }

@@ -75,19 +75,10 @@ class User extends Authenticatable implements Wallet
     ];
   }
 
-  // protected $attributes = [
-  //   'user_role_id' => 3
-  // ];
-
   public function company(): BelongsTo
   {
     return $this->belongsTo(Company::class);
   }
-
-  // public function company(): HasOne
-  // {
-  //   return $this->hasOne(Company::class);
-  // }
 
   public function role(): BelongsTo
   {
@@ -133,5 +124,15 @@ class User extends Authenticatable implements Wallet
   public function tasks(): BelongsToMany
   {
     return $this->belongsToMany(Task::class, 'specialist_tasks');
+  }
+
+  public function type(): BelongsToMany
+  {
+    return $this->belongsToMany(SpecialistType::class, 'specialist_type_user', 'user_id', 'type_id');
+  }
+
+  public function status(): BelongsToMany
+  {
+    return $this->belongsToMany(SpecialistStatus::class, 'specialist_status_user', 'user_id', 'status_id');
   }
 }

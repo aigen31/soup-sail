@@ -36,8 +36,22 @@ class UserSeeder extends Seeder
       ]);
 
       User::firstOrCreate([
-        'name' => 'Specialist',
-        'email' => 'specialist@mie.ru',
+        'name' => 'Specialist Freelance',
+        'email' => 'specialist_freelance@mie.ru',
+        'password' => Hash::make('password'),
+        'user_role_id' => 4,
+      ]);
+
+      User::firstOrCreate([
+        'name' => 'Specialist Full-Time',
+        'email' => 'specialist_fulltime@mie.ru',
+        'password' => Hash::make('password'),
+        'user_role_id' => 4,
+      ]);
+      
+      User::firstOrCreate([
+        'name' => 'Specialist Busy',
+        'email' => 'specialist_busy@mie.ru',
         'password' => Hash::make('password'),
         'user_role_id' => 4,
       ]);
