@@ -13,7 +13,7 @@ export default defineConfig({
 	],
 	server: {
 		hmr: {
-			host: 'server.evgenybil.site',
+			host: 'server.evgenybil.ru',
 		},
 	}
 });
