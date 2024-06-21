@@ -4,6 +4,7 @@ use App\Livewire\Admin\Users\Show as Users;
 use App\Livewire\Admin\Users\UserCompany;
 use App\Livewire\Admin\Users\UserProject;
 use App\Livewire\Admin\Users\UserProjects;
+use App\Livewire\Admin\Users\UserTask;
 use App\Livewire\Admin\Users\UserTransactions;
 use App\Livewire\Admin\Users\UserUpdateProject;
 use App\Livewire\Admin\Users\UserUpdateTask;
@@ -56,6 +57,7 @@ Route::middleware([
   Route::get('/control/users/project/{projectId}', UserProject::class)->name('user-project');
   Route::get('/control/users/project/{projectId}/update', UserUpdateProject::class)->name('user-update-project');
   Route::get('/control/users/task/{taskId}/update', UserUpdateTask::class)->name('user-update-task');
+  Route::get('/control/users/task/{taskId}', UserTask::class)->name('user-task');
 });
 
 Route::middleware([

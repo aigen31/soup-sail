@@ -11,7 +11,7 @@
             <div class="px-4 py-5 bg-white shadow mb-2">
                 <h2 class="text-xl font-medium mb-2">{{ $item->data['title'] }}</h2>
                 <p class="text-sm">{{ $item->data['message'] }}. <a class="text-green-500"
-                        href="{{ route('user-update-task', [
+                        href="{{ route('user-task', [
                             'taskId' => $item->data['taskId'],
                         ]) }}">Show
                         task</a></p>
