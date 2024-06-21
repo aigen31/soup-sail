@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Http\Controllers\Moderator\ModeratorController;
 use App\Http\Controllers\ProjectTaskController;
+use App\Http\Controllers\UserController;
 use App\Models\Project;
 use App\Notifications\NewClientTaskNotification;
 use App\View\Components\Layers\ControlLayout;
@@ -41,7 +42,7 @@ class Cart extends Component
   
   public function addTask()
   {
-    $users = ModeratorController::getModerators();
+    $users = UserController::getByRole(2);
 
     $this->validate(
       [

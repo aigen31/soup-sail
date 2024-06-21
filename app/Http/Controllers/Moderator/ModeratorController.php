@@ -8,7 +8,5 @@ use Illuminate\Http\Request;
 
 class ModeratorController extends Controller
 {
-    public static function getModerators() {
-      return User::where('user_role_id', 2)->get();
-    }
+  //
 }
