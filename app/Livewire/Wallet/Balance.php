@@ -7,10 +7,6 @@ use Livewire\Component;
 
 class Balance extends Component
 {
-	public function mount()
-	{
-	}
-
 	public function deposit()
 	{
 		$this->user->deposit(1500);

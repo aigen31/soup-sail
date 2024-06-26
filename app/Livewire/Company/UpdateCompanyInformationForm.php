@@ -32,8 +32,6 @@ class UpdateCompanyInformationForm extends Component
 		$this->category = $this->company->category;
 		$this->body = $this->company->body;
 		$this->inn = $this->company->inn;
-
-		// dd(InnController::getInnResponce($this->company->inn)->items[0]);
 	}
 
 	public function getCompanyProperty()

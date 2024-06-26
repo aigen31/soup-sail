@@ -33,8 +33,6 @@ class CreateProject extends Component
 
   public function createProject()
   {
-    // $this->validate();
-
     $this->validate([
       "name" => "required|min:{$this->rules['name']['minlength']}|max:{$this->rules['name']['maxlength']}",
       "description" => "required|min:{$this->rules['description']['minlength']}|max:{$this->rules['description']['maxlength']}",
