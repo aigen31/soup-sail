@@ -2,8 +2,7 @@
 
 namespace App\Livewire\Services;
 
-use App\Fabric\CartFabric;
-use App\Models\Item;
+use App\Http\Controllers\CartController;
 use App\Models\Service as ModelsService;
 use App\View\Components\Layers\ControlLayout;
 use Livewire\Component;
@@ -14,7 +13,7 @@ class Service extends Component
 
   public function makeOrder()
   {
-    CartFabric::make($this->serviceId);
+    CartController::create($this->serviceId);
 
     return redirect()->route('cart');
   }
