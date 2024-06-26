@@ -22,4 +22,9 @@ class ProjectTask extends Model
   {
     return $this->belongsToMany(User::class, 'specialist_tasks');
   }
+
+  public function invitedUsers(): BelongsToMany
+  {
+    return $this->belongsToMany(User::class, 'specialist_user_invites', 'task_id', 'user_id');
+  }
 }

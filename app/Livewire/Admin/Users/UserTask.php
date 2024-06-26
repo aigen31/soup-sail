@@ -2,13 +2,11 @@
 
 namespace App\Livewire\Admin\Users;
 
+use App\Http\Controllers\Specialist\InviteController;
 use App\Http\Controllers\Specialist\SpecialistController;
 use App\Models\ProjectTask;
 use App\Models\SpecialistType;
-use App\Models\User;
-use App\Notifications\Users\Specialist\RequestWorkTask;
 use App\View\Components\Layers\ControlLayout;
-use Illuminate\Support\Facades\Notification;
 use Livewire\Component;
 
 class UserTask extends Component
@@ -32,9 +30,18 @@ class UserTask extends Component
     return SpecialistType::all();
   }
 
+  public function invite($userId) {
+    InviteController::inviteSpecialist($userId, $this->taskId);
+  }
+
+  public function inviteAll() {
+    $invite = InviteController::inviteAll($this->specialistList, $this->taskId);
+
+    $this->dispatch($invite->getData()->status);
+  }
+
   public function getSpecialists()
   {
-    // $this->specialistList = SpecialistController::getByType($this->specialistType);
     $this->specialistList = SpecialistController::getByFilter([
       'status' => 1,
       'type' => $this->specialistType,
@@ -43,26 +50,8 @@ class UserTask extends Component
     return $this->specialistList->toArray();
   }
 
-  public function inviteSpecialist($id)
-  {
-    $invoice = [
-      'taskName' => $this->task->name,
-      'taskId' => $this->taskId,
-    ];
-
-    Notification::send(User::find($id), new RequestWorkTask($invoice));
-  }
-
-  public function inviteAll()
-  {
-    $invoice = [
-      'taskName' => $this->task->name,
-      'taskId' => $this->taskId,
-    ];
-
-    Notification::send($this->specialistList, new RequestWorkTask($invoice));
-
-    $this->dispatch('invited');
+  public function isInvited(int $userId) {
+    return InviteController::isInvited($userId, $this->taskId);
   }
 
   public function render()

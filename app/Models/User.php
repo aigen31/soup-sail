@@ -135,4 +135,8 @@ class User extends Authenticatable implements Wallet
   {
     return $this->belongsToMany(SpecialistStatus::class, 'specialist_status_user', 'user_id', 'status_id');
   }
+
+  public function invite(): HasOne {
+    return $this->hasOne(ProjectTaskInvite::class);
+  }
 }
